@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script>
+        // jokes: http://api.icndb.com/jokes/random
+        // random user: https://randomuser.me/api/
+        function startWeather() {
+            feedbackModule.getfeedback(displayWeather);
+        }
+        var feedbackModule = (function () {
+
+            // Return anything that you want to expose outside the closure
+            return {
+                getfeedback: function (callback) {
+
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: "http://api.openweathermap.org/data/2.5/weather?q=india&appid=2de143494c0b295cca9337e1e96b00e0",
+                        success: function (data) {
+                            console.log(data);
+                            callback(data);
+                        }
+                    });
+
+                }
+            };
+        }());
+        function displayWeather(data) {
+                //console.log(data[0].main);
+                document.getElementById("result").innerHTML =""+ data["main"].humidity;
+        }
+    </script>
+</head>
+<body onload="startWeather(displayWeather)">
+    <div id="result"></div>
+</body>
+</html>
