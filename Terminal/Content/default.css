@@ -74,3 +74,6 @@
 	50.01% { opacity: 0; }
 	100% { opacity: 0; }
 }
+.profile-command{
+    text-transform:capitalize;
+}

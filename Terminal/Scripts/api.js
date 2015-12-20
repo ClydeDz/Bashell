@@ -22,6 +22,7 @@ var jokeModule = (function () {
     };
 }());
 
+/* API for weather */
 var city;
 function weather(input) {
     city = input.toLowerCase();
@@ -58,3 +59,88 @@ function toReadableTime(weirdTime) {
     var d = new Date(weirdTime * 1000);
     return d;
 }
+/* API for word definition */
+var word;
+function defineWord(input) {
+    word = input;
+    wordModule.getDefinition(displayWordDefinition);
+}
+function displayWordDefinition(data) {
+    body += "<p><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</p>";
+    body += "<div>" + data[0].word.toUpperCase() + " (" + data[0].partOfSpeech + "):</div>";
+    body += "<div>"+data[0].text+"</div><br/>";
+    loadTerminalWindowText();
+}
+var wordModule = (function () {
+    return {
+        getDefinition: function (callback) {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "http://api.wordnik.com/v4/word.json/"+word+"/definitions?limit=10&includeRelated=true&sourceDictionaries=wiktionary&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5",
+                success: function (data) {
+                    callback(data);
+                }
+            });
+        }
+    };
+}());
+
+/* API for random users */
+function randomUsers() {
+    usersModule.getUsers(getRandomUsers);
+}
+function getRandomUsers(data) {
+    body += "<p><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</p>";
+    body += "<div>Name: <span class='profile-command'>" + data.results[0].user["name"].first + " " + data.results[0].user["name"].last + "</span></div>";
+    body += "<div>Gender: <span class='profile-command'>"+data.results[0].user["gender"]+"</span></div><br/>";
+    loadTerminalWindowText();
+}
+var usersModule = (function () {
+    return {
+        getUsers: function (callback) {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "https://randomuser.me/api/",
+                success: function (data) {
+                    callback(data);
+                }
+            });
+        }
+    };
+}());
+
+/* API for country information */
+var country=""; var dual = "";
+function countryInfo() {
+    var input = (document.getElementById("userInput").innerHTML).split(" ");
+    alert(input[0] + "" + input[1] + "" + input[2] + input.length);
+    country = "";
+    for (var i = 1; i < input.length;i++){
+        country += input[i].toString().toLowerCase()+" ";
+    }
+    country = country.trim();
+    countryModule.getCountryInfo(displayCountryInfo);
+}
+function displayCountryInfo(data) {
+    console.log(data[0].name + "2" + data[0].capital);
+    body += "<p><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</p>";
+    body += "<div>" + data[0].name + "</div>";
+    body += "<div>Capital: " + data[0].capital + "</div><div>Region: " + data[0].region + "</div><div>Population: " + data[0].population + "</div><div>Currency: " + data[0].currencies[0] + "</div><br/>";
+    loadTerminalWindowText();
+}
+var countryModule = (function () {
+    return {
+        getCountryInfo: function (callback) {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "https://restcountries.eu/rest/v1/name/"+country+"?fullText=true",
+                success: function (data) {
+                    callback(data);
+                }
+            });
+        }
+    };
+}());
