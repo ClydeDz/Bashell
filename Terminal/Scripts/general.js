@@ -1,53 +1,64 @@
 ﻿var myDate = new Date();
+function generalOutput(input) {
+    body += "<p><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</p>";
+    body += "<div>" + input + "</div><br/>";
+    loadTerminalWindowText();
+}
+function clearScreen() {
+    body = "";
+    loadTerminalWindowText();
+}
 function help() {
     var helpText = "<p>Help Section<br/>---------------------------------------------<br/>Below are the list of commands and its description.</p>";
     for (var i = 0; i < helpSet.length; i++) {
         helpText += "<p>" + (i + 1) + ". Command: " + helpSet[i].command + " " + helpSet[i].args + "<br/>&nbsp;&nbsp;&nbsp;Description: " + helpSet[i].description + "</p>";
     }
-    return helpText;
+    generalOutput(helpText);
 }
 function dateTime() {
-    return myDate.toString();
+    generalOutput(myDate.toString());
 }
 function date() {
-    return myDate.getDate() + "/" + myDate.getMonth() + "/" + myDate.getFullYear();
+    generalOutput(myDate.getDate() + "/" + myDate.getMonth() + "/" + myDate.getFullYear());
 }
 function time() {
-    return myDate.getHours()+":"+myDate.getMinutes();
+    generalOutput(myDate.getHours() + ":" + myDate.getMinutes());
 }
 function emoji(input) {
+    var emoticon;
     switch (input) {
         case "happy":
-            return ":)";
+            emoticon= ":)";
             break;
         case "sad":
-            return ":(";
+            emoticon= ":(";
             break;
         case "angry":
-            return ":@";
+            emoticon= ":@";
             break;
         case "cry":
-            return ":'(";
+            emoticon= ":'(";
             break;
         case "smart":
-            return ";)";
+            emoticon= ";)";
             break;
         case "excited":
-            return "*_*";
+            emoticon= "*_*";
             break;
         case "love":
-            return ":*";
+            emoticon= ":*";
             break;
         case "lost":
-            return "X_X";
+            emoticon= "X_X";
             break;
         case "surprise":
-            return ":O";
+            emoticon= ":O";
             break;
         default:
-            return "Emoji not found X_x";
+            emoticon= "Emoji not found X_x";
             break;
     }
+    generalOutput(emoticon);
 }
 function christmas() {
     var xmas = "Merry Christmas ^_^<br/>";
@@ -64,5 +75,5 @@ function christmas() {
         }
         xmas += "<br/>";
     }
-    return xmas;
+    generalOutput(xmas);
 }

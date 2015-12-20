@@ -1,7 +1,7 @@
 ﻿// docs: global variables
-var headingText = "<p>Terminal Window by Clyde D'Souza<br/>Type help for more options and functions</p>";
+var headingText = "<p>Bashell - The Terminal Window by Clyde D'Souza<br/>Type <span class='highlight'>help</span> to view the list of available commands and its description.</p>";
 var body = "";
-var flashText = "<p>root$ <span id='userInput'></span><blink><span class='cursor blink'></span></blink><p>";
+var flashText = "<p><span class='highlight root'>root$</span><span id='userInput'></span><blink><span class='cursor blink'></span></blink><p>";
 
 // docs: listens constantly for a keyboard input from the user
 function listenAndWrite(event) {
@@ -49,7 +49,7 @@ function demystify(input) {
     (flag=="0")?errorText():"";
 }
 function errorText() {
-    body += "<p>root$ " + document.getElementById("userInput").innerHTML + "</p>";
+    body += "<p><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</p>";
     body += "<p class='error'>Terminal didn't get what you meant. Would you mind being more specific, please?</p>";
     loadTerminalWindowText();
 }
@@ -58,7 +58,10 @@ var helpSet = [
     { "category": "math", "command": "toss", "arguments": "0", "args": "", "handler": "toss()", "description": "Returns either heads or tails" },
     { "category": "math", "command": "dice", "arguments": "0", "args": "", "handler": "dice()", "description": "Returns a number from the dice" },
     { "category": "math", "command": "encrypt", "arguments": "1", "args": "plaintext", "handler": "hash(brokenInput[1])", "description": "Returns a number from the dice" },
+    { "category": "math", "command": "code", "arguments": "", "args": "", "handler": "randomCode() ", "description": "Generates and returns a random code of 6 alpha-numeric characters" },
     { "category": "api", "command": "joke", "arguments": "0", "args": "", "handler": "startWeather()", "description": "Returns a random joke" },
+    { "category": "api", "command": "weather", "arguments": "1", "args": "London", "handler": "weather(brokenInput[1])", "description": "Returns the weather forecast for the city mentioned as input" },
+    { "category": "general", "command": "clear", "arguments": "0", "args": "", "handler": "clearScreen()", "description": "Clears the screen" },
     { "category": "general", "command": "help", "arguments": "0", "args": "", "handler": "help()", "description": "Display more information regarding the commands and its description" },
     { "category": "general", "command": "date", "arguments": "0", "args": "", "handler": "date()", "description": "Returns the current date" },
     { "category": "general", "command": "time", "arguments": "0", "args": "", "handler": "time()", "description": "Returns the current time" },

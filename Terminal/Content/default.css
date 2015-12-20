@@ -1,5 +1,6 @@
 ﻿body{
     font-family:monospace,'Courier New';
+    font-size:18px;
 }
 .terminal-window{
     color:white;
@@ -7,7 +8,7 @@
     display:block;
     overflow-x:auto;
     overflow-y:auto;
-    height:400px;
+    height:500px;
     padding:10px;
 }
 .terminal-window-container{
@@ -25,11 +26,16 @@
 .error{
     color:red;
 }
+.highlight{
+    color:#F0FF00;
+}
+.root{
+    margin-right:5px;
+}
 .cursor{
     padding:2px 5px;
     color:black;
     background-color:#AAA;
-    margin-left:8px;
 }
 .blink {
 	-webkit-animation: blink 1s linear infinite;
