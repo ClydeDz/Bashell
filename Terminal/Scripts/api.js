@@ -1,23 +1,10 @@
 ﻿//  http://api.icndb.com/jokes/random
 var jokeOfTheDay=[];
 function joke() {
-    jokeOfTheDay[0] = jokeOfTheDay[1];
-    jokeModule.getJoke(getJokeMiddleman);
-    return jokeOfTheDay[0];
+    jokeModule.getJoke(displayJoke);
 }
-function getJokeMiddleman(data) {
-    jokeOfTheDay[0] = jokeOfTheDay[1];
-    jokeOfTheDay[1] = data["value"].joke;
-    console.log("call");
-}
-function loadApis(){
-    jokeModule.getJoke(storeJoke);
-}
-function storeJoke(data) {
-    jokeOfTheDay[0] = "";
-    console.log(data["value"].joke);
-    jokeOfTheDay[1] = data["value"].joke;
-    console.log("h "+jokeOfTheDay[1]);
+function displayJoke(data) {
+    generalOutput(data["value"].joke);
 }
 var jokeModule = (function () {
     return {

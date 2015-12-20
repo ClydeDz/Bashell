@@ -26,7 +26,6 @@ function executeCommand() {
     demystify(input.toLowerCase());
 }
 function loadBody() {
-    loadApis();
     loadTerminalWindowText();
 }
 // docs: loads text in the terminal window
@@ -59,7 +58,7 @@ var helpSet = [
     { "category": "math", "command": "dice", "arguments": "0", "args": "", "handler": "dice()", "description": "Returns a number from the dice" },
     { "category": "math", "command": "encrypt", "arguments": "1", "args": "plaintext", "handler": "hash(brokenInput[1])", "description": "Returns a number from the dice" },
     { "category": "math", "command": "code", "arguments": "", "args": "", "handler": "randomCode() ", "description": "Generates and returns a random code of 6 alpha-numeric characters" },
-    { "category": "api", "command": "joke", "arguments": "0", "args": "", "handler": "startWeather()", "description": "Returns a random joke" },
+    { "category": "api", "command": "joke", "arguments": "0", "args": "", "handler": "joke()", "description": "Returns a random joke" },
     { "category": "api", "command": "weather", "arguments": "1", "args": "London", "handler": "weather(brokenInput[1])", "description": "Returns the weather forecast for the city mentioned as input" },
     { "category": "general", "command": "clear", "arguments": "0", "args": "", "handler": "clearScreen()", "description": "Clears the screen" },
     { "category": "general", "command": "help", "arguments": "0", "args": "", "handler": "help()", "description": "Display more information regarding the commands and its description" },
