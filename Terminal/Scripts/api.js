@@ -114,7 +114,7 @@ var usersModule = (function () {
 /* API for country information */
 var country=""; var dual = "";
 function countryInfo() {
-    var input = (document.getElementById("userInput").innerHTML).split(" ");
+    var input = document.getElementById("userInput").innerHTML.split(" ");
     country = "";
     for (var i = 1; i < input.length;i++){
         country += input[i].toString().toLowerCase()+" ";

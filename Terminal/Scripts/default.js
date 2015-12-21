@@ -16,9 +16,9 @@ function listenAndWrite(event) {
     else if (x == 13) {
         executeCommand();
     }
-    else if (x == 32) {
-        document.getElementById("userInput").innerHTML += "&nbsp;";
-    }
+    //else if (x == 32) {
+    //    document.getElementById("userInput").innerHTML += "&nbsp;";
+    //}
     else {
         document.getElementById("userInput").innerHTML += "" + String.fromCharCode(x).toString();
     }    
@@ -43,7 +43,7 @@ function loadTerminalWindowText() {
 }
 // docs: sci-fic to understand what you typed
 function demystify(input) {
-    input = input.replace("&nbsp;", " ");
+    //input = input.replace("&nbsp;", " ");
     var brokenInput = input.split(" "); var flag = "0";
     for (var i = 0; i < helpSet.length; i++) {
         if (brokenInput[0] == helpSet[i].command) {
