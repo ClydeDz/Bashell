@@ -33,7 +33,7 @@
     margin-right:5px;
 }
 .cursor{
-    padding:2px 5px;
+    padding:1px 1px;
     color:black;
     background-color:#AAA;
 }
@@ -77,3 +77,5 @@
 .profile-command{
     text-transform:capitalize;
 }
+
+/* typeahead */

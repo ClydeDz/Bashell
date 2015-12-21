@@ -46,7 +46,7 @@ function displayWeather(data) {
     body += "<p><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</p>";
     body += "<div>" + data["name"] + "</div><div>" + data.weather[0].description + " | Feels like " + toCelsius(data["main"].temp) + " &deg;C</div>";
     body += "<div>-----------------------------</div>";
-    body += "<div>Minimum temperature: " + toCelsius(data["main"].temp_min) + " &deg;C</div><divp>Maximum temperature: " + toCelsius(data["main"].temp_max) + " &deg;C</div><div>Humidity: " + data["main"].humidity + "%</div><div>Windspeed: " + toKmsPerHr(data["wind"].speed) + " Km/hr </div><div>Sunrise: " + toReadableTime(data["sys"].sunrise) + "</div><div>Sunset: " + toReadableTime(data["sys"].sunset) + "</div><br/>";
+    body += "<div>Minimum temperature: " + toCelsius(data["main"].temp_min) + " &deg;C</div><div>Maximum temperature: " + toCelsius(data["main"].temp_max) + " &deg;C</div><div>Humidity: " + data["main"].humidity + "%</div><div>Windspeed: " + toKmsPerHr(data["wind"].speed) + " Km/hr </div><div>Sunrise: " + toReadableTime(data["sys"].sunrise) + "</div><div>Sunset: " + toReadableTime(data["sys"].sunset) + "</div><br/>";
     loadTerminalWindowText();
 }
 function toCelsius(faren) {

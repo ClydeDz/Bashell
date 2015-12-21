@@ -1,19 +1,26 @@
 ﻿// docs: global variables
 var headingText = "<p>Bashell - The Terminal Window by Clyde D'Souza<br/>Type <span class='highlight'>help</span> to view the list of available commands and its description.</p>";
-var body = "";
-var flashText = "<p><span class='highlight root'>root$</span><span id='userInput'></span><blink><span class='cursor blink'></span></blink><p>";
+var body="";
+var flashText = "<p><span class='highlight root'>root$</span><span id='userInput'></span><span class='cursor blink'></span><p>";
 
 // docs: listens constantly for a keyboard input from the user
 function listenAndWrite(event) {
     var x = event.which || event.keyCode;
     if (x == 8) {
+        event.preventDefault();
         deleteText();
+    }
+    else if (x == 37 || x == 38 || x == 39 || x == 40) {
+        document.getElementById("userInput").innerHTML = document.getElementById("userInput").innerHTML;
     }
     else if (x == 13) {
         executeCommand();
     }
+    else if (x == 32) {
+        document.getElementById("userInput").innerHTML += "&nbsp;";
+    }
     else {
-        document.getElementById("userInput").innerHTML += "" + String.fromCharCode(x);
+        document.getElementById("userInput").innerHTML += "" + String.fromCharCode(x).toString();
     }    
 }
 // docs: performs the backspace button functionality
@@ -30,12 +37,13 @@ function loadBody() {
 }
 // docs: loads text in the terminal window
 function loadTerminalWindowText() {
-    var text = headingText+body+flashText;
-    document.getElementById("TerminalWindow").innerHTML = "" + text;
+    var text = headingText + body + flashText;
     $(".terminal-window").animate({ scrollTop: $(document).height() }, "slow");
+    document.getElementById("TerminalWindow").innerHTML = "" + text;
 }
 // docs: sci-fic to understand what you typed
 function demystify(input) {
+    input = input.replace("&nbsp;", " ");
     var brokenInput = input.split(" "); var flag = "0";
     for (var i = 0; i < helpSet.length; i++) {
         if (brokenInput[0] == helpSet[i].command) {
@@ -52,6 +60,7 @@ function errorText() {
     body += "<p class='error'>Terminal didn't get what you meant. Would you mind being more specific, please?</p>";
     loadTerminalWindowText();
 }
+
 var helpSet = [
     { "category": "math", "command": "square", "arguments": "1", "args": "5", "handler": "square(brokenInput[1])", "description": "Returns square of a number" },
     { "category": "math", "command": "toss", "arguments": "0", "args": "", "handler": "toss()", "description": "Returns either heads or tails" },
