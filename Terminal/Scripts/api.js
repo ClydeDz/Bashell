@@ -143,3 +143,11 @@ var countryModule = (function () {
         }
     };
 }());
+
+/* money https://openexchangerates.org/api/currencies.json what each currency code is called */
+/* currency rates base USD http://api.fixer.io/latest?base=USD */
+
+/* api for uv index http://api.owm.io/air/1.0/uvi/current?lat=51.51&lon=-0.13&from=1446465600&to=1446595200&appid=2de143494c0b295cca9337e1e96b00e0 */
+/* auckland http://api.owm.io/air/1.0/uvi/current?lat=-36.87&lon=174.77&from=1446465600&to=1446595200&appid=2de143494c0b295cca9337e1e96b00e0 */
+/* also works http://api.owm.io/air/1.0/uvi/current?lat=-36.87&lon=174.77&appid=2de143494c0b295cca9337e1e96b00e0 */
+/**/

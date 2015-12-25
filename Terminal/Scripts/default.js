@@ -11,7 +11,7 @@ function listenAndWrite(event) {
         deleteText();
     }
     else if (x == 37 || x == 38 || x == 39 || x == 40) {
-        document.getElementById("userInput").innerHTML = document.getElementById("userInput").innerHTML;
+        document.getElementById("userInput").innerHTML = document.getElementById("userInput").innerHTML.toLowerCase();
     }
     else if (x == 13) {
         executeCommand();
@@ -20,12 +20,12 @@ function listenAndWrite(event) {
     //    document.getElementById("userInput").innerHTML += "&nbsp;";
     //}
     else {
-        document.getElementById("userInput").innerHTML += "" + String.fromCharCode(x).toString();
+        document.getElementById("userInput").innerHTML += "" + String.fromCharCode(x).toString().toLowerCase();
     }    
 }
 // docs: performs the backspace button functionality
 function deleteText() {
-    document.getElementById("userInput").innerHTML=document.getElementById("userInput").innerHTML.substring(0, document.getElementById("userInput").innerHTML.length - 1);
+    document.getElementById("userInput").innerHTML = document.getElementById("userInput").innerHTML.substring(0, document.getElementById("userInput").innerHTML.length - 1);
 }
 // docs: executes commands that the user has typed in the terminal
 function executeCommand() {
@@ -38,8 +38,8 @@ function loadBody() {
 // docs: loads text in the terminal window
 function loadTerminalWindowText() {
     var text = headingText + body + flashText;
-    $(".terminal-window").animate({ scrollTop: $(document).height() }, "slow");
     document.getElementById("TerminalWindow").innerHTML = "" + text;
+    $(".terminal-window").animate({ scrollTop: $('#TerminalWindow').height() }, "slow");
 }
 // docs: sci-fic to understand what you typed
 function demystify(input) {
@@ -63,6 +63,7 @@ function errorText() {
 
 var helpSet = [
     { "category": "math", "command": "square", "arguments": "1", "args": "5", "handler": "square(brokenInput[1])", "description": "Returns square of a number" },
+    { "category": "math", "command": "cube", "arguments": "1", "args": "5", "handler": "cube(brokenInput[1])", "description": "Returns cube of a number" },
     { "category": "math", "command": "toss", "arguments": "0", "args": "", "handler": "toss()", "description": "Returns either heads or tails" },
     { "category": "math", "command": "dice", "arguments": "0", "args": "", "handler": "dice()", "description": "Returns a number from the dice" },
     { "category": "math", "command": "encrypt", "arguments": "1", "args": "plaintext", "handler": "hash(brokenInput[1])", "description": "Returns a number from the dice" },
@@ -70,7 +71,7 @@ var helpSet = [
     { "category": "api", "command": "joke", "arguments": "0", "args": "", "handler": "joke()", "description": "Returns a random joke" },
     { "category": "api", "command": "weather", "arguments": "1", "args": "London", "handler": "weather(brokenInput[1])", "description": "Returns the weather forecast for the city mentioned as input" },
     { "category": "api", "command": "define", "arguments": "1", "args": "gratitude", "handler": "defineWord(brokenInput[1])", "description": "Returns the definition of the given word" },
-    { "category": "api", "command": "profile", "arguments": "0", "args": "", "handler": "randomUsers()", "description": "Returns random user profiles" },
+    { "category": "api", "command": "random-profile", "arguments": "0", "args": "", "handler": "randomUsers()", "description": "Returns random user profiles" },
     { "category": "api", "command": "country", "arguments": "1", "args": "India", "handler": "countryInfo()", "description": "Returns country information" },
     { "category": "general", "command": "clear", "arguments": "0", "args": "", "handler": "clearScreen()", "description": "Clears the screen" },
     { "category": "general", "command": "help", "arguments": "0", "args": "", "handler": "help()", "description": "Display more information regarding the commands and its description" },

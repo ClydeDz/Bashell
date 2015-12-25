@@ -3,11 +3,64 @@
 <head>
     <title></title>
 	<meta charset="utf-8" />
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/typeahead.js"></script>
+    <script type="text/javascript">
+$(document).ready(function(){
+	$('input.typeahead').typeahead({
+		name: 'account',
+		local: ['Audi', 'BMW', 'Bugatti', 'Ferrari', 'Ford', 'Lamborghini', 'Mercedes Benz', 'Porsche', 'Rolls-Royce', 'Volkswagen']
+	});
+});
+    </script>
     <script>
-        alert((Math.random(0, 1))>0.5?"0":"1");
+        function myFunction() {
+            document.getElementById("Suggestions").innerHTML = "";
+            var input = document.getElementById("inputText").value;
+            var flag = 0;
+            if (input == " ") {
+                flag+=1;
+            }
+//            alert("dice".contains("q"));
+            console.log("" + input);
+            if (flag == 0) {
+                for (var i = 0; i < helpSet.length; i++) {
+                    if (helpSet[i].command.toString().contains(input) == true) {
+                        document.getElementById("Suggestions").innerHTML += helpSet[i].command + "<br/>";
+                    }
+                    else {
+                    }
+                }
+            }
+        }
+
+        var helpSet = [
+    { "category": "math", "command": "square", "arguments": "1", "args": "5", "handler": "square(brokenInput[1])", "description": "Returns square of a number" },
+    { "category": "math", "command": "toss", "arguments": "0", "args": "", "handler": "toss()", "description": "Returns either heads or tails" },
+    { "category": "math", "command": "dice", "arguments": "0", "args": "", "handler": "dice()", "description": "Returns a number from the dice" },
+    { "category": "math", "command": "encrypt", "arguments": "1", "args": "plaintext", "handler": "hash(brokenInput[1])", "description": "Returns a number from the dice" },
+    { "category": "math", "command": "code", "arguments": "", "args": "", "handler": "randomCode() ", "description": "Generates and returns a random code of 6 alpha-numeric characters" },
+    { "category": "api", "command": "joke", "arguments": "0", "args": "", "handler": "joke()", "description": "Returns a random joke" },
+    { "category": "api", "command": "weather", "arguments": "1", "args": "London", "handler": "weather(brokenInput[1])", "description": "Returns the weather forecast for the city mentioned as input" },
+    { "category": "api", "command": "define", "arguments": "1", "args": "gratitude", "handler": "defineWord(brokenInput[1])", "description": "Returns the definition of the given word" },
+    { "category": "api", "command": "profile", "arguments": "0", "args": "", "handler": "randomUsers()", "description": "Returns random user profiles" },
+    { "category": "api", "command": "country", "arguments": "1", "args": "India", "handler": "countryInfo()", "description": "Returns country information" },
+    { "category": "general", "command": "clear", "arguments": "0", "args": "", "handler": "clearScreen()", "description": "Clears the screen" },
+    { "category": "general", "command": "help", "arguments": "0", "args": "", "handler": "help()", "description": "Display more information regarding the commands and its description" },
+    { "category": "general", "command": "date", "arguments": "0", "args": "", "handler": "date()", "description": "Returns the current date" },
+    { "category": "general", "command": "time", "arguments": "0", "args": "", "handler": "time()", "description": "Returns the current time" },
+    { "category": "general", "command": "emoji", "arguments": "1", "args": "[happy | sad | cry | angry | love | excited | smart | lost | surprise]", "handler": "emoji(brokenInput[1])", "description": "Returns an emoji according to your emotion." },
+    { "category": "general", "command": "christmas", "arguments": "0", "args": "", "handler": "christmas()", "description": "Returns Christmas greetings" },
+    { "category": "general", "command": "today", "arguments": "0", "args": "", "handler": "dateTime()", "description": "Returns the current day, date and local time" }];
+
+
+    </script>
+    <script>
+        //alert((Math.random(0, 1))>0.5?"0":"1");
     </script>
 </head>
 <body>
-
+    <input type="text" class="typeahead tt-query" autocomplete="off" spellcheck="false" id="inputText" onkeyup="myFunction()"/>
+    <div id="Suggestions"></div>
 </body>
 </html>

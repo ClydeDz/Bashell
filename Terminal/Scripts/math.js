@@ -1,6 +1,9 @@
 ﻿function square(a) {
     generalOutput(a * a);
 }
+function cube(a) {
+    generalOutput(a*a*a);
+}
 function randomCode() {
     var s = ""; var x = 6;
     while (s.length < x && x > 0) {
