@@ -16,5 +16,5 @@ console game to Bashell.
 ## Issues and solutions
 
 As Bashell is being tested by different people on different environments, new issues will surface, if any and I will start working
-on them. This [Wiki](http://www.github.com/ClydeDz/Bashell/) tracks the identified bugs/ issues and lists whether it is resolved or not
+on them. This [Wiki](https://github.com/ClydeDz/Bashell/wiki/Issues-and-solutions) tracks the identified bugs/ issues and lists whether it is resolved or not
 and details the solution if its resolved.
