@@ -1,7 +1,7 @@
 ﻿// docs: global variables
 var headingText = "<p>Bashell - The Terminal Window by Clyde D'Souza<br/>Type <span class='highlight'>help</span> to view the list of available commands and its description.</p>";
 var body="";
-var flashText = "<p><span class='highlight root'>root$</span><span id='userInput'></span><span class='cursor blink'></span><p>";
+var flashText = "<p><span class='highlight root'>root$</span><span id='userInput'></span><span class='cursor blink'></span></p><div id='Typeahead' class='typeahead-container'><div id='TypeaheadText' class='typeahead-container'></div></div><div class='space'></div>";
 
 // docs: listens constantly for a keyboard input from the user
 function listenAndWrite(event) {
@@ -13,36 +13,93 @@ function listenAndWrite(event) {
     else if (x == 37 || x == 38 || x == 39 || x == 40) {
         document.getElementById("userInput").innerHTML = document.getElementById("userInput").innerHTML.toLowerCase();
     }
+    else if (x == 96 || x == 91 || x == 93 || x == 59 || x == 39 || x == 44 || x == 46 || x == 47) {
+        symbolsKey();
+    }
+    else if (x == 42|| x == 43 || x == 45 || x == 47) {
+        arithmeticKeys();
+    }
     else if (x == 33) {
         pageUpKey();
     }
     else if (x == 34) {
         pageDownKey();
     }
+    else if (x == 27) {
+        escapeKey();
+    }
     else if (x == 13) {
         executeCommand();
+    }
+    else if (x >= 112 && x <= 123) {
+        functionKeys();
     }
     //else if (x == 32) {
     //    document.getElementById("userInput").innerHTML += "&nbsp;";
     //}
     else {
+        //document.getElementById("userInput").innerHTML += "" + x.toString();
         document.getElementById("userInput").innerHTML += "" + String.fromCharCode(x).toString().toLowerCase();
+        predictText(document.getElementById("userInput").innerHTML);
     }    
+}
+// docs: predictive text
+var predictiveTextFlag = 0;
+function predictText(input) {
+    document.getElementById("TypeaheadText").innerHTML = "";
+    document.getElementById("Typeahead").style.display = "block";
+    predictiveTextFlag = 1;
+    var text = input;
+    var flag = 0;
+    if (text == " ") {
+        flag += 1;
+    }
+    var predictiveText = "";
+    predictiveText += "<ul>";
+    console.log("" + text);
+    if (flag == 0) {
+        for (var i = 0; i < helpSet.length; i++) {
+            if (helpSet[i].command.toString().contains(text) == true) {
+                predictiveText += "<li onclick=\"completePredictiveText('" + helpSet[i].command + "')\">" + helpSet[i].command + "</li>";
+            }
+            else {
+            }
+        }
+        document.getElementById("TypeaheadText").innerHTML = predictiveText + "</ul>";
+        if (document.getElementById("TypeaheadText").innerHTML=="<ul></ul>") {
+            document.getElementById("Typeahead").style.display = "none";
+        }
+    }
+}
+function completePredictiveText(input) {
+    document.getElementById("Typeahead").style.display = "none";
+    document.getElementById("userInput").innerHTML = input;
 }
 // docs: performs the backspace button functionality
 function deleteText() {
     document.getElementById("userInput").innerHTML = document.getElementById("userInput").innerHTML.substring(0, document.getElementById("userInput").innerHTML.length - 1);
+    predictText(document.getElementById("userInput").innerHTML);
 }
 // docs: executes commands that the user has typed in the terminal
 function executeCommand() {
     var input = document.getElementById("userInput").innerHTML;
     demystify(input.toLowerCase());
 }
+function arithmeticKeys() {
+}
 function pageDownKey() {
     $(".terminal-window").animate({ scrollTop: $('#TerminalWindow').height() }, "slow");
 }
+function functionKeys() {
+}
 function pageUpKey() {
     $(".terminal-window").animate({ scrollTop: 0 }, "slow");
+}
+function escapeKey() {
+    document.getElementById("Typeahead").style.display = "none";
+    predictiveTextFlag =0;
+}
+function symbolsKey() {
 }
 function loadBody() {
     loadTerminalWindowText();
