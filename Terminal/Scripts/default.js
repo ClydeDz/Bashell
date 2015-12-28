@@ -43,8 +43,15 @@ function listenAndWrite(event) {
         predictText(document.getElementById("userInput").innerHTML);
     }    
 }
+// docs: beta
+// listens to virtual keyboard
+function listenToVirtualKeyboard(input) {
+    console.log("fired" + input);
+}
+
 // docs: predictive text
 var predictiveTextFlag = 0;
+var predictiveWords=[];
 function predictText(input) {
     document.getElementById("TypeaheadText").innerHTML = "";
     document.getElementById("Typeahead").style.display = "block";
@@ -60,7 +67,8 @@ function predictText(input) {
     if (flag == 0) {
         for (var i = 0; i < helpSet.length; i++) {
             if (helpSet[i].command.toString().contains(text) == true) {
-                predictiveText += "<li onclick=\"completePredictiveText('" + helpSet[i].command + "')\">" + helpSet[i].command + "</li>";
+                //predictiveWords.push(helpSet[i].command);
+                predictiveText += "<li onclick=\"completePredictiveText('" + helpSet[i].command + "')\" title='" + helpSet[i].description + "&#013;Example: " + helpSet[i].command + " " + helpSet[i].args + "' >" + helpSet[i].command + "</li>";
             }
             else {
             }
@@ -71,6 +79,10 @@ function predictText(input) {
         }
     }
 }
+function toggleActivePredictiveText() {
+
+}
+
 function completePredictiveText(input) {
     document.getElementById("Typeahead").style.display = "none";
     document.getElementById("userInput").innerHTML = input;
@@ -141,7 +153,7 @@ var helpSet = [
     { "category": "api", "command": "weather", "arguments": "1", "args": "London", "handler": "weather(brokenInput[1])", "description": "Returns the weather forecast for the city mentioned as input" },
     { "category": "api", "command": "define", "arguments": "1", "args": "gratitude", "handler": "defineWord(brokenInput[1])", "description": "Returns the definition of the given word" },
     { "category": "api", "command": "random-profile", "arguments": "0", "args": "", "handler": "randomUsers()", "description": "Returns random user profiles" },
-    { "category": "api", "command": "country", "arguments": "1", "args": "India", "handler": "countryInfo()", "description": "Returns country information" },
+    { "category": "api", "command": "country", "arguments": "1", "args": "Australia", "handler": "countryInfo()", "description": "Returns country information" },
     { "category": "general", "command": "clear", "arguments": "0", "args": "", "handler": "clearScreen()", "description": "Clears the screen" },
     { "category": "general", "command": "help", "arguments": "0", "args": "", "handler": "help()", "description": "Display more information regarding the commands and its description" },
     { "category": "general", "command": "date", "arguments": "0", "args": "", "handler": "date()", "description": "Returns the current date" },

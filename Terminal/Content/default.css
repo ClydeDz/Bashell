@@ -86,10 +86,10 @@
     position:relative;
     top:0px;
     margin-left:58px;
-    max-width:500px;
+    max-width:200px;
     background-color:#444;
     color:white;
-    padding:5px 5px 5px 0px;
+    padding:0px;
     margin-bottom:5px;
     display:none;
     max-height:200px;
@@ -105,7 +105,7 @@
     background-color:inherit;
     color:inherit;
     cursor:pointer;
-    margin-left:-37px;
+    margin-left:-40px;
 }
 #Typeahead li:hover{
     background-color:#0062D1;
