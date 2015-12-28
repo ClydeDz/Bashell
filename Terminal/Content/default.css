@@ -111,3 +111,15 @@
     background-color:#0062D1;
     color:white;
 }
+
+/* virtual keyboard */
+.virtual-keyboard{
+    margin:10px 0px 10px 0px;
+    background-color:cornflowerblue;
+   
+}
+.virtual-keyboard button{
+    margin:2px;
+    padding:20px;
+}
+
