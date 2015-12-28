@@ -13,6 +13,12 @@ function listenAndWrite(event) {
     else if (x == 37 || x == 38 || x == 39 || x == 40) {
         document.getElementById("userInput").innerHTML = document.getElementById("userInput").innerHTML.toLowerCase();
     }
+    else if (x == 33) {
+        pageUpKey();
+    }
+    else if (x == 34) {
+        pageDownKey();
+    }
     else if (x == 13) {
         executeCommand();
     }
@@ -31,6 +37,12 @@ function deleteText() {
 function executeCommand() {
     var input = document.getElementById("userInput").innerHTML;
     demystify(input.toLowerCase());
+}
+function pageDownKey() {
+    $(".terminal-window").animate({ scrollTop: $('#TerminalWindow').height() }, "slow");
+}
+function pageUpKey() {
+    $(".terminal-window").animate({ scrollTop: 0 }, "slow");
 }
 function loadBody() {
     loadTerminalWindowText();
