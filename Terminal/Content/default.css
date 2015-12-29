@@ -111,7 +111,9 @@
     background-color:#0062D1;
     color:white;
 }
-
+.predictive-search-highlight{
+    color:#F0FF00;
+}
 /* virtual keyboard */
 .container-fluid{
     padding:0;

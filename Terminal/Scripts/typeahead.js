@@ -47,7 +47,7 @@ function predictText(input) {
         for (var i = 0; i < helpSet.length; i++) {
             if (helpSet[i].command.toString().contains(text) == true) {
                 var id=(predictiveWords.push(helpSet[i].command))-1;
-                predictiveText += "<li id='Predictive_" + id + "' class='predictive-default' onmouseover=\"mouseoverLi('" + id + "')\" onmouseout=\"mouseoutLi('" + id + "')\" onclick=\"completePredictiveText('" + helpSet[i].command + "')\" title='" + helpSet[i].description + "&#013;Example: " + helpSet[i].command + " " + helpSet[i].args + "' >" + helpSet[i].command + "</li>";
+                predictiveText += "<li id='Predictive_" + id + "' class='predictive-default' onmouseover=\"mouseoverLi('" + id + "')\" onmouseout=\"mouseoutLi('" + id + "')\" onclick=\"completePredictiveText('" + helpSet[i].command + "')\" title='" + helpSet[i].description + "&#013;Example: " + helpSet[i].command + " " + helpSet[i].args + "' >" + helpSet[i].command.toString().replace(""+text,"<span class='predictive-search-highlight'>"+text+"</span>") + "</li>";
             }
             else {
             }
