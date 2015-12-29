@@ -56,7 +56,7 @@ function deleteText() {
 }
 function enterKey() {
     if (predictiveTextFlag == 1) {
-        completePredictiveText(document.getElementById("Predictive_" + activeFlag).innerHTML);
+        completePredictiveText(predictiveWords[activeFlag]);
     }
     else {
         executeCommand();
@@ -139,6 +139,7 @@ var helpSet = [
     { "category": "general", "command": "date", "arguments": "0", "args": "", "handler": "date()", "description": "Returns the current date" },
     { "category": "general", "command": "time", "arguments": "0", "args": "", "handler": "time()", "description": "Returns the current time" },
     { "category": "general", "command": "emoji", "arguments": "1", "args": "[happy | sad | cry | angry | love | excited | smart | lost | surprise]", "handler": "emoji(brokenInput[1])", "description": "Returns an emoji according to your emotion." },
+    { "category": "general", "command": "bashell", "arguments": "0", "args": "", "handler": "bashell()", "description": "About Bashell terminal window" },
     { "category": "general", "command": "christmas", "arguments": "0", "args": "", "handler": "christmas()", "description": "Returns Christmas greetings" },
     { "category": "general", "command": "today", "arguments": "0", "args": "", "handler": "dateTime()", "description": "Returns the current day, date and local time" }];
 

@@ -77,3 +77,7 @@ function christmas() {
     }
     generalOutput(xmas);
 }
+function bashell() {
+    var text = "<div>Bashell Terminal window by Clyde D'Souza</div>";
+    generalOutput(text);
+}
