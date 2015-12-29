@@ -36,7 +36,7 @@ function predictText(input) {
     else {
         flag = 0;
     }
-    if (flag == 0) {
+    if (flag == 0 && input!="") {
         document.getElementById("TypeaheadText").innerHTML = "";
         document.getElementById("Typeahead").style.display = "none";
         document.getElementById("Typeahead").style.display = "block";
@@ -58,7 +58,7 @@ function predictText(input) {
         }
     }
     else {
-        predictiveTextFlag = 0;
+        document.getElementById("Typeahead").style.display = "none"; predictiveWords = []; predictiveTextFlag = 0;
     }
 }
 var activeFlag = 0;
