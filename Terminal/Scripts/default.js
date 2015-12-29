@@ -11,7 +11,8 @@ function listenAndWrite(event) {
         deleteText();
     }
     else if (x == 37 || x == 38 || x == 39 || x == 40) {
-        document.getElementById("userInput").innerHTML = document.getElementById("userInput").innerHTML.toLowerCase();
+        //event.preventDefault();
+        arrowKeys(x);
     }
     else if (x == 96 || x == 91 || x == 93 || x == 59 || x == 39 || x == 44 || x == 46 || x == 47) {
         symbolsKey();
@@ -29,7 +30,7 @@ function listenAndWrite(event) {
         escapeKey();
     }
     else if (x == 13) {
-        executeCommand();
+        enterKey();
     }
     else if (x >= 112 && x <= 123) {
         functionKeys();
@@ -43,54 +44,19 @@ function listenAndWrite(event) {
         predictText(document.getElementById("userInput").innerHTML);
     }    
 }
-// docs: beta
-// listens to virtual keyboard
-function listenToVirtualKeyboard(input) {
-    console.log("fired" + input);
-}
 
-// docs: predictive text
-var predictiveTextFlag = 0;
-var predictiveWords=[];
-function predictText(input) {
-    document.getElementById("TypeaheadText").innerHTML = "";
-    document.getElementById("Typeahead").style.display = "block";
-    predictiveTextFlag = 1;
-    var text = input;
-    var flag = 0;
-    if (text == " ") {
-        flag += 1;
-    }
-    var predictiveText = "";
-    predictiveText += "<ul>";
-    console.log("" + text);
-    if (flag == 0) {
-        for (var i = 0; i < helpSet.length; i++) {
-            if (helpSet[i].command.toString().contains(text) == true) {
-                //predictiveWords.push(helpSet[i].command);
-                predictiveText += "<li onclick=\"completePredictiveText('" + helpSet[i].command + "')\" title='" + helpSet[i].description + "&#013;Example: " + helpSet[i].command + " " + helpSet[i].args + "' >" + helpSet[i].command + "</li>";
-            }
-            else {
-            }
-        }
-        document.getElementById("TypeaheadText").innerHTML = predictiveText + "</ul>";
-        if (document.getElementById("TypeaheadText").innerHTML=="<ul></ul>") {
-            document.getElementById("Typeahead").style.display = "none";
-        }
-    }
-}
-function toggleActivePredictiveText() {
-
-}
-
-function completePredictiveText(input) {
-    document.getElementById("Typeahead").style.display = "none";
-    document.getElementById("userInput").innerHTML = input;
-}
 // docs: performs the backspace button functionality
 function deleteText() {
     document.getElementById("userInput").innerHTML = document.getElementById("userInput").innerHTML.substring(0, document.getElementById("userInput").innerHTML.length - 1);
     predictText(document.getElementById("userInput").innerHTML);
+}
+function enterKey() {
+    if (predictiveTextFlag == 1) {
+        completePredictiveText(document.getElementById("Predictive_" + activeFlag).innerHTML);
+    }
+    else {
+        executeCommand();
+    }
 }
 // docs: executes commands that the user has typed in the terminal
 function executeCommand() {
@@ -112,6 +78,16 @@ function escapeKey() {
     predictiveTextFlag =0;
 }
 function symbolsKey() {
+}
+function arrowKeys(input) {
+    if (predictiveTextFlag == 1) {
+        if (input == 38) {
+            arrowUp();
+        }
+        else if (input == 40) {
+            arrowDown();
+        }
+    }
 }
 function loadBody() {
     loadTerminalWindowText();

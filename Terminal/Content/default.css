@@ -78,7 +78,7 @@
     text-transform:capitalize;
 }
 .space{
-    height:80px;
+    height:210px;
     display:block;
 }
 /* typeahead */
@@ -98,7 +98,7 @@
 #Typeahead ul{
     margin-bottom:0px;
 }
-#Typeahead li{
+.predictive-default{
     list-style-type:none;
     list-style-position:initial;
     padding:5px 5px 5px 16px;
@@ -107,11 +107,10 @@
     cursor:pointer;
     margin-left:-40px;
 }
-#Typeahead li:hover{
+.predictive-active{
     background-color:#0062D1;
     color:white;
 }
-
 /* virtual keyboard */
 .virtual-keyboard{
     margin:10px 0px 10px 0px;
