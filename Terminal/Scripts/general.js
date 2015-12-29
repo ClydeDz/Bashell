@@ -9,7 +9,7 @@ function clearScreen() {
     loadTerminalWindowText();
 }
 function help() {
-    var helpText = "<p>Help Section<br/>---------------------------------------------<br/>Below are the list of commands and its description.</p>";
+    var helpText = "<p>Help Section<br/>----------<br/>Below are the list of commands and its description.</p>";
     for (var i = 0; i < helpSet.length; i++) {
         helpText += "<p>" + (i + 1) + ". Command: " + helpSet[i].command + " " + helpSet[i].args + "<br/>&nbsp;&nbsp;&nbsp;Description: " + helpSet[i].description + "</p>";
     }

@@ -26,7 +26,7 @@ function hash(input) {
         generalOutput(hash);
 }
 function toss() {
-    generalOutput((Math.random(0, 1)) > 0.5 ? "Heads" : "Tails");
+    generalOutput("Coin fliped to "+(Math.random(0, 1)) > 0.5 ? "Heads" : "Tails");
 }
 function dice() {
     generalOutput(Math.floor(Math.random() * 6) + 1);

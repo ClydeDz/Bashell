@@ -140,7 +140,7 @@
 .virtual-keyboard {
     margin-left: auto;
     margin-right: auto;
-    max-width: 260px;
+    max-width: 255px;
 }
 .virtual-keyboard-area {
     background-color: cornflowerblue;
