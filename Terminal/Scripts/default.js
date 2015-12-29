@@ -109,7 +109,13 @@ function demystify(input) {
     var brokenInput = input.split(" "); var flag = "0";
     for (var i = 0; i < helpSet.length; i++) {
         if (brokenInput[0] == helpSet[i].command) {
-            eval(helpSet[i].handler); flag = "1";
+            try {
+                eval(helpSet[i].handler);
+                flag = "1";
+            }
+            catch (err) {
+                errorText();
+            }            
         }
         else {
             continue;

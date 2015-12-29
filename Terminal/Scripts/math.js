@@ -1,6 +1,11 @@
 ﻿/* scripted by Clyde D'Souza */
 function square(a) {
-    generalOutput("Square of "+a+" is "+a * a);
+    try{
+        generalOutput("Square of "+a+" is "+a * a);
+    }
+    catch(err){
+        errorText();
+    }    
 }
 function cube(a) {
     generalOutput("Cube of "+a+" is "+ a*a*a);
