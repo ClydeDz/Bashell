@@ -8,7 +8,7 @@
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/default.css" rel="stylesheet" />
 </head>
-<body onkeydown="listenAndWrite(event)" onload="loadTerminalWindowText()">
+<body onkeydown="physicalKeyboardListener(event)" onload="    loadTerminalWindowText()">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -34,30 +34,81 @@
                 <p><a href="http://www.github.com/ClydeDz/Bashell">Github</a>&nbsp;|&nbsp;<a href="http://www.twitter.com/ClydeDz">Twitter</a></p>
             </div>
         </div>
-        <div class="virtual-keyboard hidden">
-            <div class="row text-center">
-                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 ">
-                    <button class="btn btn-default">1</button>
+    </div>
+    <div class="container hidden-lg hidden-md visible-sm visible-xs">
+        <button class="btn btn-primary virtual-keyboard-toggle-btn" onclick="toggleVirtualKeyboard()"><span class="glyphicon glyphicon-font"></span><span class="glyphicon glyphicon-text-background"></span></button>
+    </div>
+    <div class="container-fluid navbar-fixed-bottom hidden-lg hidden-md visible-sm visible-xs">
+        <div class="virtual-keyboard-area">
+            <div class="virtual-keyboard">
+                <div class="row text-center">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  btn-group text-center" role="group" aria-label="Basic example">
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('1')">1</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('2')">2</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('3')">3</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('4')">4</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('5')">5</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('6')">6</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('7')">7</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('8')">8</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('9')">9</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('0')">0</button>
+                    </div>
                 </div>
-                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 ">
-                    <button class="btn btn-default">1</button>
+                <div class="row text-center">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  btn-group text-center" role="group" aria-label="Basic example">
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('q')">q</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('w')">w</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('e')">e</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('r')">r</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('t')">t</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('y')">y</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('u')">u</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('i')">i</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('o')">o</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('p')">p</button>
+                    </div>
                 </div>
-                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 ">
-                    <button class="btn btn-default">1</button>
+                <div class="row text-center">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  btn-group text-center" role="group" aria-label="Basic example">
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('a')">a</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('s')">s</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('d')">d</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('f')">f</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('g')">g</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('h')">h</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('j')">j</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('k')">k</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('l')">l</button>
+                        <button class="btn btn-default disabled" onclick="">&nbsp;</button>
+                    </div>
                 </div>
-                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 ">
-                    <button class="btn btn-default">1</button>
+                <div class="row text-center">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  btn-group text-center" role="group" aria-label="Basic example">
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('z')">z</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('x')">x</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('c')">c</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('v')">v</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('b')">b</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('n')">n</button>
+                        <button class="btn btn-default" onclick="virtualKeyboardListener('m')">m</button>
+                        <button class="btn btn-success enter-key" onclick="virtualKeyboardListener('ENTER')">Enter</button>
+
+                    </div>
                 </div>
-                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-                    <button class="btn btn-default">1</button>
+                <div class="row text-center">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  btn-group text-center" role="group" aria-label="Basic example">
+                        <button class="btn btn-warning escape-key" onclick="virtualKeyboardListener('ESCAPE')">Esc</button>
+                        <button class="btn btn-default space-key" onclick="virtualKeyboardListener('SPACE')">Space</button>
+                        <button class="btn btn-danger backspace-key" onclick="virtualKeyboardListener('BACKSPACE')">Bckspc</button>
+                    </div>
                 </div>
-                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-                    <button class="btn btn-default">1</button>
-                </div>
-               
             </div>
         </div>
     </div>
+        
+
+   
     <script src="Scripts/jquery-1.9.1.js"></script>
     <script src="Scripts/typeahead.js"></script>
     <script src="Scripts/bootstrap.js"></script>

@@ -111,13 +111,63 @@
     background-color:#0062D1;
     color:white;
 }
+
 /* virtual keyboard */
-.virtual-keyboard{
-    margin:10px 0px 10px 0px;
-    background-color:cornflowerblue;
-   
+.container-fluid{
+    padding:0;
 }
 .virtual-keyboard button{
-    padding:2px 7px 2px 7px;
+    padding:7.5px;
+    margin-right:0.8px;
+    border-radius:0;
 }
+.virtual-keyboard .enter-key{
+    padding-left:16px;
+    padding-right:17px;
+}
+.virtual-keyboard .space-key{
+    padding-left:45px;
+    padding-right:46px;
+}
+.virtual-keyboard .backspace-key{
+    padding-left:12px;
+    padding-right:13px;
+}
+.virtual-keyboard .espace-key{
+    padding-left:5px;
+    padding-right:6px;
+}
+.virtual-keyboard {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 250px;
+}
+.virtual-keyboard-area {
+    background-color: cornflowerblue;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin:0;
+    width:100%;
+    display:none;
+    -webkit-transition: color 0.1s ease-in, background 3s ease-in;
+    -moz-transition: color 0.1s ease-in, background 3s ease-in;
+    -ms-transition: color 0.1s ease-in, background 3s ease-in;
+    -o-transition: color 0.1s ease-in, background 3s ease-in;
+    transition: color 0.1s ease-in, background 3s ease-in;
+}
+.visible-virtual-keyboard{
+    display:block;
+}
+.virtual-keyboard-toggle-btn{
+    position:fixed;
+    bottom:50px;
+    right:5px;
+}
+.virtual-keyboard-toggle-btn-active{
+    position:fixed;
+    bottom:225px;
+    right:5px;
+}
+
+
 

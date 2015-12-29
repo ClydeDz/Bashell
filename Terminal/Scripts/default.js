@@ -4,20 +4,22 @@ var body="";
 var flashText = "<p><span class='highlight root'>root$</span><span id='userInput'></span><span class='cursor blink'></span></p><div id='Typeahead' class='typeahead-container'><div id='TypeaheadText' class='typeahead-container'></div></div><div class='space'></div>";
 
 // docs: listens constantly for a keyboard input from the user
-function listenAndWrite(event) {
+function physicalKeyboardListener(event) {
     var x = event.which || event.keyCode;
+    console.log(x);
+    event.preventDefault();
     if (x == 8) {
-        event.preventDefault();
+        //event.preventDefault();
         deleteText();
     }
     else if (x == 37 || x == 38 || x == 39 || x == 40) {
-        //event.preventDefault();
+        // event.preventDefault();
         arrowKeys(x);
     }
     else if (x == 96 || x == 91 || x == 93 || x == 59 || x == 39 || x == 44 || x == 46 || x == 47) {
         symbolsKey();
     }
-    else if (x == 42|| x == 43 || x == 45 || x == 47) {
+    else if (x == 42 || x == 43 || x == 45 || x == 47) {
         arithmeticKeys();
     }
     else if (x == 33) {
@@ -35,16 +37,18 @@ function listenAndWrite(event) {
     else if (x >= 112 && x <= 123) {
         functionKeys();
     }
-    //else if (x == 32) {
-    //    document.getElementById("userInput").innerHTML += "&nbsp;";
-    //}
+        //else if (x == 32) {
+        //    document.getElementById("userInput").innerHTML += "&nbsp;";
+        //}
     else {
         //document.getElementById("userInput").innerHTML += "" + x.toString();
-        document.getElementById("userInput").innerHTML += "" + String.fromCharCode(x).toString().toLowerCase();
-        predictText(document.getElementById("userInput").innerHTML);
-    }    
+        listenAndWrite(String.fromCharCode(x).toString().toLowerCase());
+    }
 }
-
+function listenAndWrite(x) {
+    document.getElementById("userInput").innerHTML += "" + x;
+    predictText(document.getElementById("userInput").innerHTML);
+}
 // docs: performs the backspace button functionality
 function deleteText() {
     document.getElementById("userInput").innerHTML = document.getElementById("userInput").innerHTML.substring(0, document.getElementById("userInput").innerHTML.length - 1);
