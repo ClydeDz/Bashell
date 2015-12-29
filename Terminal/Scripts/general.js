@@ -1,4 +1,5 @@
-﻿var myDate = new Date();
+﻿/* scripted by Clyde D'Souza */
+var myDate = new Date();
 function generalOutput(input) {
     body += "<p><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</p>";
     body += "<div>" + input + "</div><br/>";
@@ -78,6 +79,7 @@ function christmas() {
     generalOutput(xmas);
 }
 function bashell() {
-    var text = "<div>Bashell Terminal window by Clyde D'Souza</div>";
+    var text = "<div>Bashell Terminal window [Version: f808c8f]</div>";
+    text+="<div>Clyde D'Souza [http://goo.gl/8yXVaA]</div>";
     generalOutput(text);
 }

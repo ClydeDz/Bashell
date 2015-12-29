@@ -1,4 +1,5 @@
-﻿//  http://api.icndb.com/jokes/random
+﻿/* scripted by Clyde D'Souza */
+//  http://api.icndb.com/jokes/random
 var jokeOfTheDay=[];
 function joke() {
     jokeModule.getJoke(displayJoke);

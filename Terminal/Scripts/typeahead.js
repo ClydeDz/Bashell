@@ -1,4 +1,5 @@
-﻿// docs:
+﻿/* scripted by Clyde D'Souza */
+// docs:
 // listens to virtual keyboard
 function virtualKeyboardListener(input) {
     if (input == "SPACE") {

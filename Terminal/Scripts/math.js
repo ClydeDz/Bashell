@@ -1,4 +1,5 @@
-﻿function square(a) {
+﻿/* scripted by Clyde D'Souza */
+function square(a) {
     generalOutput("Square of "+a+" is "+a * a);
 }
 function cube(a) {

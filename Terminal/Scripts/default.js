@@ -1,4 +1,5 @@
-﻿// docs: global variables
+﻿/* scripted by Clyde D'Souza */
+// docs: global variables
 var headingText = "<p>Bashell - The Terminal Window by Clyde D'Souza<br/>Type <span class='highlight'>help</span> to view the list of available commands and its description.</p>";
 var body="";
 var flashText = "<p><span class='highlight root'>root$</span><span id='userInput'></span><span class='cursor blink'></span></p><div id='Typeahead' class='typeahead-container'><div id='TypeaheadText' class='typeahead-container'></div></div><div class='space'></div>";
