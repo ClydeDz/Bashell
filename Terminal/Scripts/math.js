@@ -1,8 +1,8 @@
 ﻿function square(a) {
-    generalOutput(a * a);
+    generalOutput("Square of "+a+" is "+a * a);
 }
 function cube(a) {
-    generalOutput(a*a*a);
+    generalOutput("Cube of "+a+" is "+ a*a*a);
 }
 function randomCode() {
     var s = ""; var x = 6;
@@ -26,8 +26,8 @@ function hash(input) {
         generalOutput(hash);
 }
 function toss() {
-    generalOutput("Coin fliped to "+(Math.random(0, 1)) > 0.5 ? "Heads" : "Tails");
+    generalOutput("Coin fliped to "+((Math.random(0, 1)) > 0.5 ? "Heads" : "Tails"));
 }
 function dice() {
-    generalOutput(Math.floor(Math.random() * 6) + 1);
+    generalOutput("Dice rolled to " + (Math.floor(Math.random() * 6) + 1));
 }

@@ -16,13 +16,13 @@ function help() {
     generalOutput(helpText);
 }
 function dateTime() {
-    generalOutput(myDate.toString());
+    generalOutput("Today is "+myDate.toString());
 }
 function date() {
     generalOutput(myDate.getDate() + "/" + myDate.getMonth() + "/" + myDate.getFullYear());
 }
 function time() {
-    generalOutput(myDate.getHours() + ":" + myDate.getMinutes());
+    generalOutput("Time is "+myDate.getHours() + ":" + myDate.getMinutes());
 }
 function emoji(input) {
     var emoticon;
