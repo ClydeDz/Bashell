@@ -24,6 +24,10 @@ body{
 .terminal-window-container>div>div>p{
     line-height:1.8rem;
 }
+.input-container{
+    max-width:1120px;
+     word-wrap: break-word; 
+}
 .error{
     color:red;
 }

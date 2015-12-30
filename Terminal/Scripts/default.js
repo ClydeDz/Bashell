@@ -2,7 +2,7 @@
 // docs: global variables
 var headingText = "<p>Bashell - The Terminal Window by Clyde D'Souza<br/>Type <span class='highlight'>help</span> to view the list of available commands and its description.</p>";
 var body="";
-var flashText = "<p><span class='highlight root'>root$</span><span id='userInput'></span><span class='cursor blink'></span></p><div id='Typeahead' class='typeahead-container'><div id='TypeaheadText' class='typeahead-container'></div></div><div class='space'></div>";
+var flashText = "<div class='input-container'><span class='highlight root'>root$</span><span id='userInput'></span><span class='cursor blink'></span></div><div id='Typeahead' class='typeahead-container'><div id='TypeaheadText' class='typeahead-container'></div></div><div class='space'></div>";
 
 // docs: listens constantly for a keyboard input from the user
 function physicalKeyboardListener(event) {
@@ -124,7 +124,7 @@ function demystify(input) {
     (flag=="0")?errorText():"";
 }
 function errorText() {
-    body += "<p><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</p>";
+    body += "<div class='input-container'><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</div>";
     body += "<p class='error'>Terminal didn't get what you meant. Would you mind being more specific, please?</p>";
     loadTerminalWindowText();
 }

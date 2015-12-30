@@ -49,7 +49,7 @@ var weatherModule = (function () {
     };
 }());
 function displayWeather(data) {
-    body += "<p><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</p>";
+    body += "<div class='input-container'><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</div>";
     body += "<div>" + data["name"] + "</div><div>" + data.weather[0].description + " | Feels like " + toCelsius(data["main"].temp) + " &deg;C</div>";
     body += "<div>-----------------------------</div>";
     body += "<div>Minimum temperature: " + toCelsius(data["main"].temp_min) + " &deg;C</div><div>Maximum temperature: " + toCelsius(data["main"].temp_max) + " &deg;C</div><div>Humidity: " + data["main"].humidity + "%</div><div>Windspeed: " + toKmsPerHr(data["wind"].speed) + " Km/hr </div><div>Sunrise: " + toReadableTime(data["sys"].sunrise) + "</div><div>Sunset: " + toReadableTime(data["sys"].sunset) + "</div><br/>";
@@ -72,7 +72,7 @@ function defineWord(input) {
     wordModule.getDefinition(displayWordDefinition);
 }
 function displayWordDefinition(data) {
-    body += "<p><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</p>";
+    body += "<div class='input-container'><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</div>";
     body += "<div>" + data[0].word.toUpperCase() + " (" + data[0].partOfSpeech + "):</div>";
     body += "<div>"+data[0].text+"</div><br/>";
     loadTerminalWindowText();
@@ -97,7 +97,7 @@ function randomUsers() {
     usersModule.getUsers(getRandomUsers);
 }
 function getRandomUsers(data) {
-    body += "<p><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</p>";
+    body += "<div class='input-container'><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</div>";
     body += "<div>Name: <span class='profile-command'>" + data.results[0].user["name"].first + " " + data.results[0].user["name"].last + "</span></div>";
     body += "<div>Gender: <span class='profile-command'>"+data.results[0].user["gender"]+"</span></div><br/>";
     loadTerminalWindowText();
@@ -130,7 +130,7 @@ function countryInfo() {
 }
 function displayCountryInfo(data) {
     console.log(data[0].name + "2" + data[0].capital);
-    body += "<p><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</p>";
+    body += "<div class='input-container'><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</div>";
     body += "<div>" + data[0].name + "</div>";
     body += "<div>Capital: " + data[0].capital + "</div><div>Region: " + data[0].region + "</div><div>Population: " + data[0].population + "</div><div>Currency: " + data[0].currencies[0] + "</div><br/>";
     loadTerminalWindowText();

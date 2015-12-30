@@ -1,7 +1,8 @@
 ﻿/* scripted by Clyde D'Souza */
 var myDate = new Date();
 function generalOutput(input) {
-    body += "<p><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</p>";
+    /* output code in 4 other places one for each api in api.js. changes made here must be made there also */
+    body += "<div class='input-container'><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</div>";
     body += "<div>" + input + "</div><br/>";
     loadTerminalWindowText();
 }
@@ -10,9 +11,9 @@ function clearScreen() {
     loadTerminalWindowText();
 }
 function help() {
-    var helpText = "<p>Help Section<br/>----------<br/>Below are the list of commands and its description.</p>";
+    var helpText = "<p>Help Section<br/>-------------<br/>Below are the list of commands and its description.</p>";
     for (var i = 0; i < helpSet.length; i++) {
-        helpText += "<p>" + (i + 1) + ". Command: " + helpSet[i].command + " " + helpSet[i].args + "<br/>&nbsp;&nbsp;&nbsp;Description: " + helpSet[i].description + "</p>";
+        helpText += "<p>[" + (i + 1) + "] " + helpSet[i].command + " " + helpSet[i].args + "<br/>Description: " + helpSet[i].description + "</p>";
     }
     generalOutput(helpText);
 }
@@ -81,5 +82,6 @@ function christmas() {
 function bashell() {
     var text = "<div>Bashell Terminal window [Version: f808c8f]</div>";
     text += "<div>Clyde D'Souza [<a href='http://goo.gl/8yXVaA' class='console-link'>http://goo.gl/8yXVaA</a>]</div>";
+    text += "<div>Thank you for using Bashell</div>";
     generalOutput(text);
 }
