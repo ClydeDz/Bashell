@@ -154,7 +154,7 @@ body{
     max-width: 255px;
 }
 .virtual-keyboard-area {
-    background-color: cornflowerblue;
+    background-color: #337AB7;
     padding-top: 15px;
     padding-bottom: 15px;
     margin:0;
