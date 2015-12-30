@@ -38,6 +38,9 @@ body{
     color:black;
     background-color:#AAA;
 }
+.console-link,.console-link:active,.console-link:hover,.console-link:visited{
+    color:white;
+}
 .blink {
 	-webkit-animation: blink 1s linear infinite;
 	-moz-animation: blink 1s linear infinite;

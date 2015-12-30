@@ -80,6 +80,6 @@ function christmas() {
 }
 function bashell() {
     var text = "<div>Bashell Terminal window [Version: f808c8f]</div>";
-    text+="<div>Clyde D'Souza [http://goo.gl/8yXVaA]</div>";
+    text += "<div>Clyde D'Souza [<a href='http://goo.gl/8yXVaA' class='console-link'>http://goo.gl/8yXVaA</a>]</div>";
     generalOutput(text);
 }

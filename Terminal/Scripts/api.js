@@ -2,7 +2,12 @@
 //  http://api.icndb.com/jokes/random
 var jokeOfTheDay=[];
 function joke() {
-    jokeModule.getJoke(displayJoke);
+    try{
+        jokeModule.getJoke(displayJoke);
+    }
+    catch (err) {
+        errorText();
+    }
 }
 function displayJoke(data) {
     generalOutput(data["value"].joke);

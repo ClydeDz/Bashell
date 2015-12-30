@@ -1,14 +1,15 @@
 ﻿/* scripted by Clyde D'Souza */
 function square(a) {
-    try{
+    if (/^\d+$/.test(a))
         generalOutput("Square of "+a+" is "+a * a);
-    }
-    catch(err){
+    else
         errorText();
-    }    
 }
 function cube(a) {
-    generalOutput("Cube of "+a+" is "+ a*a*a);
+    if (/^\d+$/.test(a))
+        generalOutput("Cube of " + a + " is " + a * a * a);
+    else
+        errorText();
 }
 function randomCode() {
     var s = ""; var x = 6;
