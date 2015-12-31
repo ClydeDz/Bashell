@@ -21,7 +21,8 @@ function dateTime() {
     generalOutput("Today is "+myDate.toString());
 }
 function date() {
-    generalOutput(myDate.getDate() + "/" + myDate.getMonth() + "/" + myDate.getFullYear());
+    var month=myDate.getMonth() + 1;
+    generalOutput(myDate.getDate() + "/" + month+ "/" + myDate.getFullYear());
 }
 function time() {
     generalOutput("Time is "+myDate.getHours() + ":" + myDate.getMinutes());

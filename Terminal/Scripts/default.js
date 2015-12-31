@@ -7,7 +7,6 @@ var flashText = "<div class='input-container'><span class='highlight root'>root$
 // docs: listens constantly for a keyboard input from the user
 function physicalKeyboardListener(event) {
     var x = event.which || event.keyCode;
-    console.log(x);
     event.preventDefault();
     if (x == 8) {
         //event.preventDefault();

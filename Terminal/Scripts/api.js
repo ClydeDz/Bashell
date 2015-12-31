@@ -1,5 +1,6 @@
 ﻿/* scripted by Clyde D'Souza */
-//  http://api.icndb.com/jokes/random
+
+/* API for retreiving a random joke */
 var jokeOfTheDay=[];
 function joke() {
     try{
@@ -20,8 +21,10 @@ var jokeModule = (function () {
                 dataType: "json",
                 url: "http://api.icndb.com/jokes/random",
                 success: function (data) {
-                    console.log(data);
-                    callback(data);
+                    if (data["type"] == "success")
+                        callback(data);
+                    else
+                        errorText();
                 }
             });
         }
@@ -33,6 +36,7 @@ var city;
 function weather(input) {
     city = input.toLowerCase();
     weatherModule.getWeather(displayWeather);
+
 }
 var weatherModule = (function () {
     return {
@@ -42,7 +46,10 @@ var weatherModule = (function () {
                 dataType: "json",
                 url: "http://api.openweathermap.org/data/2.5/weather?q="+city+"&units=imperial&appid=2de143494c0b295cca9337e1e96b00e0",
                 success: function (data) {
-                    callback(data);
+                    if (data["cod"]==200)
+                        callback(data);
+                    else
+                        errorText();
                 }
             });
         }
@@ -65,6 +72,7 @@ function toReadableTime(weirdTime) {
     var d = new Date(weirdTime * 1000);
     return d;
 }
+
 /* API for word definition */
 var word;
 function defineWord(input) {
@@ -85,7 +93,11 @@ var wordModule = (function () {
                 dataType: "json",
                 url: "http://api.wordnik.com/v4/word.json/"+word+"/definitions?limit=10&includeRelated=true&sourceDictionaries=wiktionary&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5",
                 success: function (data) {
-                    callback(data);
+                    console.log(data.length);
+                    if (data.length != 0)
+                        callback(data);
+                    else
+                        errorText();
                 }
             });
         }
@@ -110,7 +122,10 @@ var usersModule = (function () {
                 dataType: "json",
                 url: "https://randomuser.me/api/",
                 success: function (data) {
-                    callback(data);
+                    if (data.results.length != 0)
+                        callback(data);
+                    else
+                        errorText();
                 }
             });
         }
@@ -129,7 +144,6 @@ function countryInfo() {
     countryModule.getCountryInfo(displayCountryInfo);
 }
 function displayCountryInfo(data) {
-    console.log(data[0].name + "2" + data[0].capital);
     body += "<div class='input-container'><span class='highlight root'>root$</span>" + document.getElementById("userInput").innerHTML + "</div>";
     body += "<div>" + data[0].name + "</div>";
     body += "<div>Capital: " + data[0].capital + "</div><div>Region: " + data[0].region + "</div><div>Population: " + data[0].population + "</div><div>Currency: " + data[0].currencies[0] + "</div><br/>";
@@ -143,7 +157,10 @@ var countryModule = (function () {
                 dataType: "json",
                 url: "https://restcountries.eu/rest/v1/name/"+country+"?fullText=true",
                 success: function (data) {
-                    callback(data);
+                        callback(data);
+                },
+                error: function (data) {
+                    errorText();
                 }
             });
         }
@@ -156,4 +173,3 @@ var countryModule = (function () {
 /* api for uv index http://api.owm.io/air/1.0/uvi/current?lat=51.51&lon=-0.13&from=1446465600&to=1446595200&appid=2de143494c0b295cca9337e1e96b00e0 */
 /* auckland http://api.owm.io/air/1.0/uvi/current?lat=-36.87&lon=174.77&from=1446465600&to=1446595200&appid=2de143494c0b295cca9337e1e96b00e0 */
 /* also works http://api.owm.io/air/1.0/uvi/current?lat=-36.87&lon=174.77&appid=2de143494c0b295cca9337e1e96b00e0 */
-/**/
