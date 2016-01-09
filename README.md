@@ -1,8 +1,6 @@
 # Bashell
-Bashell is a browser-based terminal window with a difference.
-
-Bashell is a browser-based terminal window that accepts a wide range of predefined commands from the user as an input and produces the output in the window itself.
-Bashell runs entirely on JavaScript. 
+Bashell is a browser-based terminal window with a difference. Bashell is a browser-based terminal window that accepts a wide range of predefined commands from the user as an input and produces the output in the window itself.
+Bashell runs entirely on JavaScript. Web Url: [www.bashell.azurewebsites.net](http://bashell.azurewebsites.net/).
 
 ## To get started
 
